@@ -1,6 +1,6 @@
 {
   "name": "intelius",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Scraper for Intelius",
   "main": "src/index.js",
   "repository": "https://AJRedDevil@bitbucket.org/shilfu/intelius.git",
