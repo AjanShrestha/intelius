@@ -5,8 +5,8 @@ const Promise = require('bluebird');
 
 // Our Packages
 const login = require('./login');
-const {profileLinksScraper} = require('./scraper');
-const {helper, Reader, screenshot, WebGateway} = require('./utils');
+const {profileLinksScraper, profileScraper} = require('./scraper');
+const {helper, Reader, screenshot, WebGateway, Writer} = require('./utils');
 const logger = require('../logger');
 
 // Constants
@@ -24,6 +24,10 @@ const main = async page =>
       } else {
         const profileLinks = await profileLinksScraper(page, person);
         MainLogger.info(`profileLinks: ${profileLinks.length}`);
+        for (const link of profileLinks) {
+          const arr = await profileScraper(page, link, person);
+          await Writer.writeRecords(arr);
+        }
       }
     }).then(() => {
       MainLogger.info('COMPLETED!!!');

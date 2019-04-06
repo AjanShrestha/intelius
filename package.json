@@ -10,6 +10,7 @@
   "dependencies": {
     "bluebird": "3.5.4",
     "cheerio": "1.0.0-rc.2",
+    "csv-writer": "1.2.0",
     "csvtojson": "2.0.8",
     "dotenv": "7.0.0",
     "lodash": "4.17.11",
