@@ -1,4 +1,7 @@
+require('dotenv').config();
+
 // Our Packages
+const login = require('./login');
 const {
   screenshot,
   WebGateway,
@@ -19,10 +22,7 @@ if (require.main === module) {
     try {
       browser = await WebGateway.browser();
       const page = await WebGateway.page(browser);
-      MainLogger.info('Visiting Google')
-      await page.goto('https://www.google.com/');
-      MainLogger.info('Taking Screenshot');
-      await screenshot(page, 'Google');
+      await login(page);
     } catch (e) {
       console.error(e);
     } finally {

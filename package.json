@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "dotenv": "7.0.0",
     "log4js": "4.1.0",
     "puppeteer": "1.14.0"
   },
