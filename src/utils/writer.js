@@ -4,39 +4,40 @@ const csvWriter = createCsvWriter({
   path: 'storage/out.csv',
   encoding: 'utf-8',
   append: true,
-  header: [{
+  header: [
+    {
       id: 'name',
-      title: 'Name'
+      title: 'Name',
     },
     {
       id: 'address',
-      title: 'Address'
+      title: 'Address',
     },
     {
       id: 'city',
-      title: 'City'
+      title: 'City',
     },
     {
       id: 'state',
-      title: 'State'
+      title: 'State',
     },
     {
       id: 'zip',
-      title: 'Zip'
+      title: 'Zip',
     },
     {
       id: 'phone',
-      title: 'Phone'
+      title: 'Phone',
     },
     {
       id: 'phoneState',
-      title: 'PhoneState'
+      title: 'PhoneState',
     },
     {
       id: 'email',
-      title: 'Email'
-    }
-  ]
+      title: 'Email',
+    },
+  ],
 });
 
 module.exports = csvWriter;

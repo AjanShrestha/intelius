@@ -1,4 +1,8 @@
-const getMatchStr = str => str.split(' ').slice(0, 2).join(' ');
+const getMatchStr = str =>
+  str
+    .split(' ')
+    .slice(0, 2)
+    .join(' ');
 
 const matchAddress = (addresses, matchingAddress) => {
   const matchStr = getMatchStr(matchingAddress);

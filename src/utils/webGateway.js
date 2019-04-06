@@ -9,14 +9,14 @@ const browser = async () => {
   BrowserLogger.info('Start');
   const browser = await puppeteer.launch({
     // headless: false,
-    args: ['--start-fullscreen', '--incognito']
+    args: ['--start-fullscreen', '--incognito'],
   });
   BrowserLogger.info('Puppeteer launch');
   BrowserLogger.info('End');
   return browser;
 };
 
-const page = async (browser) => {
+const page = async browser => {
   PageLogger.info('Start');
   const page = await browser.newPage();
   PageLogger.info('New page');
@@ -24,9 +24,9 @@ const page = async (browser) => {
   page.setJavaScriptEnabled(false);
   PageLogger.info('End');
   return page;
-}
+};
 
 module.exports = {
   browser,
-  page
+  page,
 };

@@ -8,13 +8,9 @@ const login = require('./login');
 const {profileLinksScraper, profileScraper} = require('./scraper');
 const {helper, Reader, screenshot, WebGateway, Writer} = require('./utils');
 const logger = require('../logger');
-
-// Constants
-const APP_LABEL = 'APP';
-const MAIN_LABEL = 'MAIN';
-
-const AppLogger = logger(APP_LABEL);
-const MainLogger = logger(MAIN_LABEL);
+// loggers
+const AppLogger = logger('APP');
+const MainLogger = logger('MAIN');
 
 const main = async page =>
   Reader().then(persons =>

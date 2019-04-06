@@ -11,6 +11,6 @@ const profileLinks = async $ => {
       links.push(link);
     });
   return links;
-}
+};
 
 module.exports = profileLinks;
