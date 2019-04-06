@@ -84,6 +84,5 @@ typings/
 .dynamodb/
 
 # Project
-storage/
-logs/
-screenshots/
+storage
+screenshots

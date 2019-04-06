@@ -9,6 +9,10 @@ The objective of the project is to scrap the user phone number, email and addres
 3. csv-writer
 4. csvtojson
 
+# Steps
+
+1. Add email and password in .env file in root path.
+
 # Contributors
 
 **Ajan Lal Shrestha**

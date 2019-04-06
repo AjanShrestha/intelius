@@ -1,0 +1,25 @@
+{
+  "name": "intelius",
+  "version": "1.0.0",
+  "description": "Scraper for Intelius",
+  "main": "src/index.js",
+  "repository": "https://AJRedDevil@bitbucket.org/shilfu/intelius.git",
+  "author": "Ajan Lal Shrestha <ajan.shresh@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bluebird": "3.5.4",
+    "cheerio": "1.0.0-rc.2",
+    "csv-writer": "1.2.0",
+    "csvtojson": "2.0.8",
+    "dotenv": "7.0.0",
+    "lodash": "4.17.11",
+    "log4js": "4.1.0",
+    "puppeteer": "1.14.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node src/index.js",
+    "start:dev": "NODE_ENV=development node src/index.js",
+    "start:debug": "NODE_ENV=debug node src/index.js"
+  }
+}
