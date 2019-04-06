@@ -8,10 +8,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "log4js": "4.1.0"
+    "log4js": "4.1.0",
+    "puppeteer": "1.14.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node src/index.js",
-    "start:debug": "NODE_ENV=development node src/index.js"
+    "start:dev": "NODE_ENV=development node src/index.js",
+    "start:debug": "NODE_ENV=debug node src/index.js"
   }
 }
