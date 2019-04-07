@@ -3,24 +3,34 @@ const Promise = require('bluebird');
 
 // Our Packages
 const {profileLinksScraper, profileScraper} = require('./scraper');
-const {helper, Reader, Writer} = require('./utils');
+const {helper, reader, writer} = require('./utils');
 // logger
 const logger = require('../logger')('MAIN');
 
 const main = async page =>
-  Reader().then(persons =>
+  reader.xlsx('input').then(persons =>
     Promise.each(persons, async person => {
       if (!helper.isSearchable(person)) {
-        logger.info(`Person: ${person}`);
+        logger.info(`Not Searchable Person: ${JSON.stringify(person)}`);
       } else {
         const profileLinks = await profileLinksScraper(page, person);
         logger.info(`profileLinks: ${profileLinks.length}`);
+        let matched = false;
         for (const link of profileLinks) {
           const arr = await profileScraper(page, link, person);
-          await Writer.writeRecords(arr);
+          await helper.timeoutPromise(300);
+          if (arr.length > 0) {
+            matched = true;
+            await writer.json(arr, 'tempData');
+          }
+        }
+        if (matched) {
+          await writer.json(helper.rowSeparator, 'tempData');
         }
       }
-    }).then(() => {
+    }).then(async () => {
+      const jsonData = await reader.json('tempData');
+      await writer.xlsx(jsonData);
       logger.info('COMPLETED!!!');
     })
   );
