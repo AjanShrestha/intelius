@@ -49,7 +49,6 @@ const csvWriter = createCsvWriter({
 const writer = {
   csv: csvWriter,
   json: async (datum, filename = 'tempData') => {
-    console.log('datum', JSON.stringify(datum));
     const FILENAME = `storage/${filename}.json`;
     let data = [];
     if (fs.existsSync(FILENAME)) {
