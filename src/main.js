@@ -18,7 +18,7 @@ const main = async page =>
         let matched = false;
         for (const link of profileLinks) {
           const arr = await profileScraper(page, link, person);
-          await helper.timeoutPromise(300);
+          await helper.throttle();
           if (arr.length > 0) {
             matched = true;
             await writer.json(arr, 'tempData');

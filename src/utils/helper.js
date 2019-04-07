@@ -22,6 +22,11 @@ const timeoutPromise = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 };
 
+const throttle = () => {
+  const randomNum = Math.floor(Math.random() * 5) + 1;
+  return timeoutPromise(500 * randomNum);
+};
+
 const backupFile = async fileName => {
   const FILENAME = `storage/${fileName}`;
   if (fs.existsSync(FILENAME)) {
@@ -55,4 +60,5 @@ module.exports = {
   emptyPerson,
   rowSeparator,
   timeoutPromise,
+  throttle,
 };

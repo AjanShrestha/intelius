@@ -21,7 +21,7 @@ const page = async browser => {
   const page = await browser.newPage();
   PageLogger.info('New page');
   page.setDefaultNavigationTimeout(60 * 1000);
-  page.setJavaScriptEnabled(false);
+  page.setJavaScriptEnabled(true);
   PageLogger.info('End');
   return page;
 };

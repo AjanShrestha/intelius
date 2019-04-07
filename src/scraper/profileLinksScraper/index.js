@@ -13,7 +13,7 @@ const profileLinksScraper = async (page, person) => {
   while (isNext) {
     const searchHtmlContent = await search(page, person, pageNum);
     logger.info('Searched Person');
-    await helper.timeoutPromise(300);
+    await helper.throttle();
     const links = await scrapeProfileLinks(searchHtmlContent);
     logger.info('Scraped Profile LInk');
     profileLinks = await [...profileLinks, ...links];
