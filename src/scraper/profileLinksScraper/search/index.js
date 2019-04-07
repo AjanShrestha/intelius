@@ -1,14 +1,20 @@
 // Our Packages
 const SELECTORS = require('./selectors');
-const {screenshot} = require('../../../utils');
+const {helper, reader, screenshot} = require('../../../utils');
 const logger = require('../../../../logger')('SEARCH');
 
-const getSearchInput = ({Name, City, State}) => {
-  const nameSplit = Name.split(' ');
+const getSearchInput = props => {
+  const NAME = reader.yaml().XLSX.NAME;
+  const CITY = reader.yaml().XLSX.CITY;
+  const STATE = reader.yaml().XLSX.STATE;
+  const nameSplit = props[NAME].split(' ');
   return {
     firstName: nameSplit[0],
-    lastName: nameSplit[nameSplit.length - 1],
-    cityState: `${City}, ${State}`,
+    lastName:
+      nameSplit.length > 3
+        ? nameSplit[nameSplit.length - 2]
+        : nameSplit[nameSplit.length - 1],
+    cityState: `${props[CITY]}, ${props[STATE]}`,
   };
 };
 
@@ -34,6 +40,7 @@ const search = async (page, personInfo, pageNum) => {
   await screenshot(page, 'Search');
 
   // Page wait
+  await helper.timeoutPromise(300);
   await page.goto(searchUrl);
   logger.info('Result Navigation');
 

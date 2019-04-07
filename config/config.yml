@@ -1,0 +1,52 @@
+XLSX:
+  ADDRESS: 'Personal_Reps_Address'
+  CITY: 'Personal_Reps_City'
+  NAME: 'Personal_Reps_Name'
+  STATE: 'Personal_Reps_State'
+  ORIGINAL_FIELDNAMES:
+    [
+      'County',
+      'Estate_Number',
+      'Filing_Date',
+      'Date_of_Death',
+      'Type',
+      'Status',
+      'Name',
+      'Decedent_Name',
+      'Date_of_Probate',
+      'Personal_Reps_Name',
+      'Personal_Reps_Address',
+      'Personal_Reps_City',
+      'Personal_Reps_State',
+      'Personal_Reps_Zip',
+      'Attorney_Name',
+      'Attorney_Address',
+      'Attorney_City',
+      'Attorney_State',
+      'Attorney_Zip',
+    ]
+  FINAL_FIELDNAMES:
+    [
+      'County',
+      'Estate_Number',
+      'Filing_Date',
+      'Date_of_Death',
+      'Type',
+      'Status',
+      'Name',
+      'Decedent_Name',
+      'Date_of_Probate',
+      'Personal_Reps_Name',
+      'Personal_Reps_Address',
+      'Personal_Reps_City',
+      'Personal_Reps_State',
+      'Personal_Reps_Zip',
+      'Phone',
+      'PhoneState',
+      'Email',
+      'Attorney_Name',
+      'Attorney_Address',
+      'Attorney_City',
+      'Attorney_State',
+      'Attorney_Zip',
+    ]
