@@ -3,7 +3,7 @@ require('dotenv').config();
 // Our Packages
 const login = require('./login');
 const main = require('./main');
-const {WebGateway} = require('./utils');
+const {helper, WebGateway} = require('./utils');
 // logger
 const logger = require('../logger')('APP');
 
@@ -15,6 +15,8 @@ if (require.main === module) {
       browser = await WebGateway.browser();
       const page = await WebGateway.page(browser);
       await login(page);
+      await helper.backupFile('tempData.json');
+      await helper.backupFile('out.xlsx');
       await main(page);
     } catch (e) {
       console.error(e);

@@ -1,3 +1,7 @@
+// System packages
+const fs = require('fs');
+
+// Installed packages
 const _ = require('lodash');
 
 // Our Packages
@@ -16,6 +20,15 @@ const isSearchable = obj => {
 
 const timeoutPromise = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
+};
+
+const backupFile = async fileName => {
+  const FILENAME = `storage/${fileName}`;
+  if (fs.existsSync(FILENAME)) {
+    const COPY_FILENAME = `storage/${fileName}.${Date.now()}.bak`;
+    fs.copyFileSync(FILENAME, COPY_FILENAME);
+    fs.unlinkSync(FILENAME);
+  }
 };
 
 const keys = reader.yaml().XLSX.FINAL_FIELDNAMES;
@@ -38,6 +51,7 @@ const emptyPerson = keys.reduce(
 
 module.exports = {
   isSearchable,
+  backupFile,
   emptyPerson,
   rowSeparator,
   timeoutPromise,
