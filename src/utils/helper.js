@@ -25,7 +25,7 @@ const timeoutPromise = timeout => {
 const backupFile = async fileName => {
   const FILENAME = `storage/${fileName}`;
   if (fs.existsSync(FILENAME)) {
-    const COPY_FILENAME = `storage/${fileName}.${Date.now()}.bak`;
+    const COPY_FILENAME = `storage/backup/${fileName}.${Date.now()}.bak`;
     fs.copyFileSync(FILENAME, COPY_FILENAME);
     fs.unlinkSync(FILENAME);
   }
