@@ -1,5 +1,5 @@
 setup:
-	mkdir logs screenshots storage
+	mkdir logs screenshots storage playground
 cleanlogs:
 	rm logs/*
 cleanscreenshots:

@@ -1,14 +1,16 @@
 const logger = require('../../logger')('SCREENSHOT');
 
 const screenshot = async (page, filename) => {
-  if (process.env.NODE_ENV === 'development') {
+  if (['development', 'debug'].includes(process.env.NODE_ENV)) {
     logger.info('Start Screenshot');
-    const finalFilename = await `${filename.split(' ').join('_')}_${Date.now()}`;
+    const finalFilename = await `${filename
+      .split(' ')
+      .join('_')}_${Date.now()}`;
     await page.screenshot({
-      path: `screenshots/${finalFilename}.png`
+      path: `screenshots/${finalFilename}.png`,
     });
     logger.info('End Screenshot');
   }
-}
+};
 
 module.exports = screenshot;

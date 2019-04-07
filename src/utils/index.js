@@ -1,13 +1,13 @@
 const helper = require('./helper');
-const Reader = require('./reader');
+const reader = require('./reader');
 const screenshot = require('./screenshot');
 const WebGateway = require('./webGateway');
-const Writer = require('./writer');
+const writer = require('./writer');
 
 module.exports = {
   helper,
-  Reader,
+  reader,
   screenshot,
   WebGateway,
-  Writer,
+  writer,
 };

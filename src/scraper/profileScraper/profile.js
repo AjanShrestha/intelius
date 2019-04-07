@@ -1,9 +1,9 @@
-const LABEL = "PROFILE"
+const LABEL = 'PROFILE';
 
 // selectors
 // profile > name & age
-const PROFILE_HEADING = '#profileHeadingWrapper'
-const NAME = 'div.identity > span'
+const PROFILE_HEADING = '#profileHeadingWrapper';
+const NAME = 'div.identity > span';
 const AGE = 'div.identity > p > strong';
 // profile > phones
 const CONTACT_INFO = '#sidebar';
@@ -19,6 +19,10 @@ const MAIN = '#main';
 const ADDRESS = 'ul.addresses > li';
 const NUM = 'span.num';
 
+// Phone number 10 digits
+const numberPattern = new RegExp('\\d+', 'g'); // /\d+/g;
+const isDigit = str => str.match(numberPattern) !== null;
+const isTenDigit = str => str.match(numberPattern).join('').length === 10;
 
 const getPhone = $ => {
   const phones = [];
@@ -26,12 +30,17 @@ const getPhone = $ => {
     $(CONTACT_INFO)
       .find(PHONE)
       .each((i, ele) => {
-        const phone = $(ele).text().trim().split("  ")[0];
-        phones.push({
-          phone,
-          isCurrent: $(ele).find(IS_CURRENT).length > 0,
-          isMobile: $(ele).find(IS_MOBILE).length > 0
-        });
+        const phone = $(ele)
+          .text()
+          .trim()
+          .split('  ')[0];
+        if (isDigit(phone) && isTenDigit(phone)) {
+          phones.push({
+            phone,
+            isCurrent: $(ele).find(IS_CURRENT).length > 0,
+            isMobile: $(ele).find(IS_MOBILE).length > 0,
+          });
+        }
       });
   }
   return phones;
@@ -53,23 +62,31 @@ const getAddresses = $ => {
   $(MAIN)
     .find(ADDRESS)
     .each((i, ele) => {
-      $(ele).find(NUM).remove();
-      $(ele).find('br').replaceWith(' ');
+      $(ele)
+        .find(NUM)
+        .remove();
+      $(ele)
+        .find('br')
+        .replaceWith(' ');
       let address = $(ele).text();
       if ($(ele).find(IS_CURRENT).length > 0) {
         address = address.replace('current', '');
       }
       addresses.push(address);
-    })
+    });
   return addresses;
 };
 
 const profile = $ => ({
-  name: $(PROFILE_HEADING).find(NAME).text(),
-  age: $(PROFILE_HEADING).find(AGE).html(),
+  name: $(PROFILE_HEADING)
+    .find(NAME)
+    .text(),
+  age: $(PROFILE_HEADING)
+    .find(AGE)
+    .html(),
   phone: getPhone($),
   email: getEmail($),
-  address: getAddresses($)
+  address: getAddresses($),
 });
 
 module.exports = profile;
