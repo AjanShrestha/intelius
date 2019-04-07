@@ -8,7 +8,7 @@ const PageLogger = require('../../logger')('PAGE');
 const browser = async () => {
   BrowserLogger.info('Start');
   const browser = await puppeteer.launch({
-    // headless: false,
+    headless: process.env.NODE_ENV !== 'debug',
     args: ['--start-fullscreen', '--incognito'],
   });
   BrowserLogger.info('Puppeteer launch');

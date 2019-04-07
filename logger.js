@@ -49,7 +49,7 @@ const productionAppenders = {
 };
 
 const logger = LABEL => {
-  if (process.env.NODE_ENV === 'development') {
+  if (['development', 'debug'].includes(process.env.NODE_ENV)) {
     log4js.configure({
       appenders: developmentAppenders,
       categories: {
