@@ -9,7 +9,8 @@ const logger = require('../logger')('MAIN');
 
 const main = async page =>
   reader.xlsx('input').then(persons =>
-    Promise.each(persons, async person => {
+    Promise.each(persons, async (person, index) => {
+      logger.info(`Searching for index: ${index + 1}`);
       if (!helper.isSearchable(person)) {
         logger.info(`Not Searchable Person: ${JSON.stringify(person)}`);
       } else {
