@@ -18,7 +18,7 @@
     "lodash": "4.17.21",
     "log4js": "4.1.0",
     "puppeteer": "1.14.0",
-    "xlsx": "0.14.2"
+    "xlsx": "0.17.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node src/index.js",
